@@ -807,7 +807,7 @@ if(isset($_POST['submit'])){
                                     <table class="table table-responsive-md">
                                         <thead>
                                             <tr>
-                                            	<th style="width:600px;"></th>
+                                            	<th style="width:100px;"></th>
                                                 <th><strong>#</strong></th>
                                                 <th><strong>Title</strong></th>
                                                 <th><strong>Authors</strong></th>
@@ -832,7 +832,7 @@ if(isset($_POST['submit'])){
                                     	 	<tr>
                                             	<td></td>
                                                  <td><strong><?php echo $row["faculty_research_id"]?></strong></td>
-                                                 <td><div class="d-flex align-items-center" width="24" alt="" style="text-align: left;"><?php echo $row["title"]?></div></td>
+                                                 <td><div class="d-flex align-items-center" class="rounded-lg me-2" width="24" alt="" style="text-align: left;"><?php echo $row["title"]?></div></td>
                                                 <td><?php echo $row["authors"]?></td>
                                                 <td><?php echo $row["college"]?></td>
                                                 <td><?php echo $row["program"]?></td>
@@ -849,7 +849,7 @@ if(isset($_POST['submit'])){
 															<svg width="20px" height="20px" viewbox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
 														</button>
 														<div class="dropdown-menu">
-															<button type="button" data-toggle="modal" data-target="#exampleModalCenter" role="" class="open-button editbtn">Edit</button>
+															<button type="button" data-toggle="modal" role="" class="open-button<?php echo $row["faculty_research_id"]?> editbtn">Edit</button>
 
 															<a class="dropdown-item" href="#">Delete</a>
 														</div>
@@ -865,21 +865,26 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
-	            <dialog class="modal1" id="modal1">
+                <?php
+                	$sql = "SELECT * FROM faculty_research";
+                	$result = mysqli_query($conn, $sql);
+                	while($row = mysqli_fetch_assoc($result)) {
+
+                	echo '<dialog class="modals modal',$row["faculty_research_id"],'" id="modal',$row["faculty_research_id"],'">
 	            	<div class="basic-form">
                 	<form method="post" action="topics.php">
                   	<div class="row">
                             <div class="mb-12 col-md-12">
                                 <label class="form-label ">Title <span class="text-danger">*</span>
                                 </label>
-                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="title"></textarea>
+                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="title">',$row["title"],'</textarea>
                             </div>
                     	</div>
 
                     	<div class="row" style="margin-top: 14px;">
                     		<div class="mb-3 col-md-3">
                                 <label class="form-label">Author(s) <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="authors"></textarea>
+                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="authors">',$row["authors"],'</textarea>
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label class="form-label">College <span class="text-danger">*</span></label>
@@ -896,7 +901,7 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label class="form-label">Program <span class="text-danger">*</span></label>
-                                <select id="inputState" class="default-select form-control wide" name="program" required>
+                                <select id="inputState" class="default-select form-control wide" name="program" required >
                                     <option selected="">Choose...</option>
                                     <option>CTE</option>
                                     <option>CET</option>
@@ -909,7 +914,7 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label>Budget <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control"required name="budget">
+                                <input type="text" class="form-control"required name="budget" value="',$row["budget"],'">
                             </div>	
                     	</div>
 
@@ -934,7 +939,7 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label>Revision No.</label>
-                                <input type="text" class="form-control" name="revisionno">
+                                <input type="text" class="form-control" name="revisionno" value="',$row["revisionno"],'">
                             </div>	
                         </div>
       				    <div class="col-md-2" style="margin-top: 14px;">
@@ -948,11 +953,13 @@ if(isset($_POST['submit'])){
       				    		</button>
       				    	</div> -->
       				    	<button type="submit" class="btn btn-primary mb-2" name="submit">Update</button>
-      				    	<a href="#"><i type="Closed" class="button close-button btn btn-primary mb-2">Close</i></a>
+      				    	<a href="#"><i type="Closed" class="button close-button',$row["faculty_research_id"],' btn btn-primary mb-2">Close</i></a>
   				    	</div>
       				</form>
             	</div>
-            	</dialog>
+            	</dialog>';
+            }
+                ?>
             </div>
 
 
@@ -997,23 +1004,31 @@ if(isset($_POST['submit'])){
 	<script src="js/dlabnav-init.js"></script>
 	<script src="js/demo.js"></script>
     <script src="js/styleSwitcher.js"></script>
-    <script>
+  
+  <?php
+  	$sql = "SELECT * FROM faculty_research";
+		$result = mysqli_query($conn, $sql);
+		while($row = mysqli_fetch_assoc($result)) {
+  	echo "
+			<script>
+			    const modal",$row['faculty_research_id']," = document.querySelector('#modal",$row['faculty_research_id'],"');
+			    const openModal",$row['faculty_research_id']," = document.querySelector('.open-button",$row['faculty_research_id'],"');
+			    const closeModal",$row['faculty_research_id']," = document.querySelector('.close-button",$row['faculty_research_id'],"');
 
-	    const modal1 = document.querySelector('#modal1');
-	    const openModal = document.querySelector('.open-button');
-	    const closeModal = document.querySelector('.close-button');
+			    openModal",$row['faculty_research_id'],".addEventListener('click', () => {
+			    	modal",$row['faculty_research_id'],".showModal();
+			    	console.log('test');
+			    })
 
-	    openModal.addEventListener('click', () => {
-	    	modal1.showModal();
-	    })
-
-	    closeModal.addEventListener('click', () => {
-	    	modal1.close();
-	    })
-	    	
-	    	
-  </script>
-	s
+			    closeModal",$row['faculty_research_id'],".addEventListener('click', () => {
+			    	modal",$row['faculty_research_id'],".close();
+			    })
+			    	
+			    	
+		  </script>
+		";
+	}
+  ?>
 
 </body>
 </html>

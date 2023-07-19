@@ -743,7 +743,7 @@ if(isset($_POST['submit'])){
 							<span class="nav-text">Dashboard</span>
 						</a>
                     </li>
-                     <li><a href="project-page.html" class="">
+                     <li><a href="topics.php" class="">
 						    <i class="fas fa-users"></i>
 							<span class="nav-text">Research Title</span>
 						</a>
