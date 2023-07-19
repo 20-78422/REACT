@@ -29163,3 +29163,45 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
   max-width: 300px;
   width: 100%;
 }
+
+.modal1 {
+  padding: 2em;
+  max-width: 50ch;
+  position: absolute;
+  border: 0;
+  box-shadow: 0 0 1em rgb(0 0 0 / .5);
+  max-width: 1000px;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 30px;
+  /*top: 0px;*/
+}
+
+.modal1::backdrop{
+  background: rgb(0 0 0 / .5);
+}
+
+.row2{
+  display: flex;
+  flex-direction: row;
+
+}
+
+dd.option {
+  position: absolute;
+  z-index: 100;
+}
+
+.editbtn {
+  background: #fff;
+  width: 100%;
+  border: 0;
+  height: 25px;
+  text-align: left;
+  padding-left: 13px;
+}
+
+.editbtn:hover {
+  background-color: #EEE;
+}

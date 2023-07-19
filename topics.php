@@ -783,9 +783,9 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="card-body">
                                 <div class="basic-form">
-                                	<div class="row">
+                                	<form method="post" action="topics.php">
+	                                	<div class="row">
                                             <div class="mb-12 col-md-12">
-                                            	<form method="post" action="topics.php">
                                                 <label class="form-label ">Title <span class="text-danger">*</span>
                                                 </label>
                                                 <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="title"></textarea>
@@ -865,9 +865,8 @@ if(isset($_POST['submit'])){
                       				    	</div> -->
                       				    	<button type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
                       				    	<a href="kanban.php"><i type="Closed" class="btn btn-primary mb-2">Close</i></a>
-          				    			</form>
-                  				    </div>
-                      				
+                  				    	</div>
+                      				</form>
                             	</div>
                             </div>
                   	    </div>

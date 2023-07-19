@@ -807,12 +807,11 @@ if(isset($_POST['submit'])){
                                     <table class="table table-responsive-md">
                                         <thead>
                                             <tr>
-                                            	<th style="width:600px;">
-												</th>
+                                            	<th style="width:600px;"></th>
                                                 <th><strong>#</strong></th>
                                                 <th><strong>Title</strong></th>
                                                 <th><strong>Authors</strong></th>
-                                                <th><strong>Department</strong></th>
+                                                <th><strong>College</strong></th>
                                                 <th><strong>Program</strong></th>
                                                 <th><strong>Budget</strong></th>
                                                 <th><strong>Status</strong></th>
@@ -824,19 +823,25 @@ if(isset($_POST['submit'])){
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
+                                        	<?php 
+                                        	require 'dbconn.php';
+                                        	$sql = "SELECT * FROM faculty_research";
+                                        	$result = mysqli_query($conn, $sql);
+                                        	while($row = mysqli_fetch_assoc($result)) {
+                                        	 ?>
+                                    	 	<tr>
                                             	<td></td>
-                                                 <td><strong>1</strong></td>
-                                                 <td><div class="d-flex align-items-center" style="text-align: justify;">React (Research Activity Tracker): An Innovative Tool for Tracking and Monitoring in BatstateU Faculty Research Performancelkasdkjasdkjalkdj kakjdlkjak lkakjlkdja sjajsdhaj ahdjah a kajsh akha sdhaj </div></td>
-                                                <td>jhorely C. gabriel</td>
-                                                <td>Cics</td>
-                                                <td>bsit</td>
-                                                <td>1000</td>
-                                                <td>on going</td>
-                                                <td>07/19/23</td>
-                                                <td>07/19/23</td>
-                                                <td>1</td>
-                                                <td>file</td>
+                                                 <td><strong><?php echo $row["faculty_research_id"]?></strong></td>
+                                                 <td><div class="d-flex align-items-center" width="24" alt="" style="text-align: left;"><?php echo $row["title"]?></div></td>
+                                                <td><?php echo $row["authors"]?></td>
+                                                <td><?php echo $row["college"]?></td>
+                                                <td><?php echo $row["program"]?></td>
+                                                <td><?php echo $row["budget"]?></td>
+                                                <td><?php echo $row["status"]?></td>
+                                                <td><?php echo $row["date_started"]?></td>
+                                                <td><?php echo $row["end_date"]?></td>
+                                                <td><?php echo $row["revision_no"]?></td>
+                                                <td><?php echo $row["file_path"]?></td>
                                                 <td>
 													<div class="d-flex">
 													<div class="dropdown">
@@ -844,33 +849,125 @@ if(isset($_POST['submit'])){
 															<svg width="20px" height="20px" viewbox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"></rect><circle fill="#000000" cx="5" cy="12" r="2"></circle><circle fill="#000000" cx="12" cy="12" r="2"></circle><circle fill="#000000" cx="19" cy="12" r="2"></circle></g></svg>
 														</button>
 														<div class="dropdown-menu">
-															<a class="dropdown-item" href="#">Edit</a>
+															<button type="button" data-toggle="modal" data-target="#exampleModalCenter" role="" class="open-button editbtn">Edit</button>
+
 															<a class="dropdown-item" href="#">Delete</a>
 														</div>
 													</div>
 												</td>
                                             </tr>
+                                			<?php
+                                				}
+                                			?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+	            <dialog class="modal1" id="modal1">
+	            	<div class="basic-form">
+                	<form method="post" action="topics.php">
+                  	<div class="row">
+                            <div class="mb-12 col-md-12">
+                                <label class="form-label ">Title <span class="text-danger">*</span>
+                                </label>
+                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="title"></textarea>
+                            </div>
+                    	</div>
+
+                    	<div class="row" style="margin-top: 14px;">
+                    		<div class="mb-3 col-md-3">
+                                <label class="form-label">Author(s) <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="authors"></textarea>
+                            </div>
+                            <div class="mb-3 col-md-3">
+                                <label class="form-label">College <span class="text-danger">*</span></label>
+                                <select id="inputState" class="default-select form-control wide" name="college"required>
+                                    <option selected="">Choose...</option>
+                                    <option>CTE</option>
+                                    <option>CET</option>
+                                    <option>CICS</option>
+                                    <option>CAS</option>
+                                    <option>CABEIHM</option>
+                                    <option>CONAHS</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-3">
+                                <label class="form-label">Program <span class="text-danger">*</span></label>
+                                <select id="inputState" class="default-select form-control wide" name="program" required>
+                                    <option selected="">Choose...</option>
+                                    <option>CTE</option>
+                                    <option>CET</option>
+                                    <option>CICS</option>
+                                    <option>CAS</option>
+                                    <option>CABEIHM</option>
+                                    <option>CONAHS</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                            <div class="mb-3 col-md-3">
+                                <label>Budget <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control"required name="budget">
+                            </div>	
+                    	</div>
+
+                        <div class="row">
+                            <div class="mb-3 col-md-3">
+                                <label class="form-label">Status <span class="text-danger">*</span></label>
+                                <select id="inputState" class="default-select form-control wide" name="status" required>
+                                    <option selected="">Choose...</option>
+                                    <option>On Going</option>
+                                    <option>Pending</option>
+                                    <option>Completed</option>
+                                    <option>Published</option>
+                                </select>
+                            </div>
+                            <div class="mb-2 col-md-3">
+                                <label class="form-label">Date Started <span class="text-danger">*</span></label>
+                                <input type="date" value="" class="form-control"required name="datestarted">
+                            </div>
+                            <div class="mb-2 col-md-3">
+                                <label class="form-label">End Date <span class="text-danger">*</span></label>
+                                <input type="date" value="" class="form-control"required name="enddate">
+                            </div>
+                            <div class="mb-3 col-md-3">
+                                <label>Revision No.</label>
+                                <input type="text" class="form-control" name="revisionno">
+                            </div>	
+                        </div>
+      				    <div class="col-md-2" style="margin-top: 14px;">
+      				    	<!-- <div class="card">
+      				    		<button type="button" class="btn btn-rounded btn-success" name="filePath">
+      				    			<span class="btn-icon-start text text-success">
+      				    				<i class="fa fa-upload color-success">
+      				    				</i>
+      				    			</span>
+      				    			Upload
+      				    		</button>
+      				    	</div> -->
+      				    	<button type="submit" class="btn btn-primary mb-2" name="submit">Update</button>
+      				    	<a href="#"><i type="Closed" class="button close-button btn btn-primary mb-2">Close</i></a>
+  				    	</div>
+      				</form>
+            	</div>
+            	</dialog>
             </div>
+
+
         </div>
         <!--**********************************
             Content body end
         ***********************************-->
 		
-
-
 		
         <!--**********************************
             Footer start
         ***********************************-->
         <div class="footer">
             <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="../index.htm" target="_blank">DexignLab</a> 2021</p>
+                <p>Copyright © Designed &amp; Developed by REACT 2023</p>
             </div>
         </div>
         <!--**********************************
@@ -900,7 +997,23 @@ if(isset($_POST['submit'])){
 	<script src="js/dlabnav-init.js"></script>
 	<script src="js/demo.js"></script>
     <script src="js/styleSwitcher.js"></script>
-	
+    <script>
+
+	    const modal1 = document.querySelector('#modal1');
+	    const openModal = document.querySelector('.open-button');
+	    const closeModal = document.querySelector('.close-button');
+
+	    openModal.addEventListener('click', () => {
+	    	modal1.showModal();
+	    })
+
+	    closeModal.addEventListener('click', () => {
+	    	modal1.close();
+	    })
+	    	
+	    	
+  </script>
+	s
 
 </body>
 </html>
