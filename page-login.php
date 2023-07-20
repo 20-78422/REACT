@@ -1,4 +1,42 @@
-﻿<!DOCTYPE html>
+﻿<?php
+// Assuming you have established a MySQL connection.
+// Replace 'your_mysql_host', 'your_mysql_username', 'your_mysql_password', and 'your_mysql_db' with actual values.
+$conn = mysqli_connect('localhost', 'root', '', 'react');
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $confirmPassword = $_POST["confirm_password"];
+
+    // Additional validation should be done on the server-side to ensure data integrity and security.
+    // For example, check if the email is unique and if the passwords match.
+
+    if ($password === $confirmPassword) {
+        // Hash the password before storing it in the database for security reasons.
+        $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
+
+        // Insert the user information into the database.
+        $query = "INSERT INTO login (email, password, confirm_password) VALUES ('$email', '$hashedPassword', '$hashedPassword')";
+
+        if (mysqli_query($conn, $query)) {
+            echo "User registration successful!";
+        } else {
+            echo "Error: " . mysqli_error($conn);
+        }
+    } else {
+        echo "Passwords do not match.";
+    }
+}
+
+mysqli_close($conn);
+?>
+
+
+<!DOCTYPE html>
 <html lang="en" class="h-100">
 
 <head>
@@ -39,23 +77,17 @@
                                     <form action="index.html">
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Email</strong></label>
-                                            <input type="email" class="form-control" value="hello@example.com">
+                                            <input type="email" class="form-control" placeholder="hello@example.com" id="email" name="email" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Password</strong></label>
-                                            <input type="password" class="form-control" value="Password">
+                                            <input type="password" class="form-control" placeholder="Password" id="password" name="password" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="mb-1"><strong>Confirm Password</strong></label>
-                                            <input type="password" class="form-control" value="confirmPassword">
+                                            <input type="password" class="form-control" placeholder="confirmPassword" id="confirm_password" name="confirm_password" required>
                                         </div>
                                         <div class="row d-flex justify-content-between mt-4 mb-2">
-                                            <div class="mb-3">
-                                               <div class="form-check custom-checkbox ms-1">
-                                                    <input type="checkbox" class="form-check-input" id="basic_checkbox_1">
-                                                    <label class="form-check-label" for="basic_checkbox_1">Remember my preference</label>
-                                                </div>
-                                            </div>
                                             <div class="mb-3">
                                                 <a href="page-forgot-password.html">Forgot Password?</a>
                                             </div>

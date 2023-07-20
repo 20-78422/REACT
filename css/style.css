@@ -29270,3 +29270,6 @@ dd.option {
 .actionHeader {
   width: 100px;
 }
+input[type="file"]{
+  display: none;
+}
