@@ -160,6 +160,14 @@
 				{
 				  name: 'Cycling',
 				  data: [80, 40, 55, 20, 45, 30, 80]
+				},
+				{
+				  name: 'Cycling',
+				  data: [80, 40, 55, 20, 45, 30, 80]
+				}, 
+				{
+				  name: 'Cycling',
+				  data: [80, 40, 55, 20, 45, 30, 80]
 				}, 
 				
 			],
@@ -186,7 +194,7 @@
 				filter: 'none',
 			  }
 			},
-			colors:['#FFA26D', '#FF5ED2'],
+			colors:['#F8BABA', '#F83E3E', '#e79f31', '#DB7093'],
 			dataLabels: {
 			  enabled: false,
 			},
@@ -223,7 +231,7 @@
 			},
 			xaxis: {
 				 position: 'bottom',
-			  categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+			  categories: ['2020', '2021', '2022', '2023', '2024', '2025', '2026'],
 			  labels: {
 			   style: {
 				  colors: '#787878',
@@ -460,7 +468,7 @@
 			},
 			xaxis: {
 				
-			  categories: ['J', 'F', 'M', 'A', 'M', 'J', 'J'],
+			  categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 			  labels: {
 				style: {
 					colors: '#7E7F80',
@@ -578,7 +586,7 @@
 					show: false,
 				},
 				
-				categories: ['Sun', 'Mon', 'Tue'],
+				categories: ['January', 'February', 'March'],
 			},
 			yaxis: {
 				show: false
