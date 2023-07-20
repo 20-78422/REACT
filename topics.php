@@ -795,7 +795,7 @@ if(isset($_POST['submit'])){
                                     	<div class="row" style="margin-top: 14px;">
                                     		<div class="mb-3 col-md-3">
                                                 <label class="form-label">Author(s) <span class="text-danger">*</span></label>
-                                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="authors"></textarea>
+                                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Authors" required="" name="authors"></textarea>
                                             </div>
                                             <div class="mb-3 col-md-3">
                                                 <label class="form-label">College <span class="text-danger">*</span></label>

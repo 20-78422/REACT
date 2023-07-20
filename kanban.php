@@ -742,7 +742,7 @@ if(isset($_POST['submit'])){
 							<span class="nav-text">Dashboard</span>
 						</a>
                     </li>
-                     <li><a href="topics.php" class="">
+                     <li><a href="kanban.php" class="">
 						    <i class="fas fa-users"></i>
 							<span class="nav-text">Research Topic</span>
 						</a>
@@ -804,22 +804,21 @@ if(isset($_POST['submit'])){
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-responsive-md">
+                                    <table class="tableResearch">
                                         <thead>
                                             <tr>
-                                            	<th style="width:100px;"></th>
-                                                <th><strong>#</strong></th>
-                                                <th><strong>Title</strong></th>
-                                                <th><strong>Authors</strong></th>
-                                                <th><strong>College</strong></th>
-                                                <th><strong>Program</strong></th>
-                                                <th><strong>Budget</strong></th>
-                                                <th><strong>Status</strong></th>
-                                                <th><strong>Date Started</strong></th>
-                                                <th><strong>End Date</strong></th>
-                                                <th><strong>Revision No</strong></th>
-                                                <th><strong>Upload</strong></th>
-                                                <th><strong>Action</strong></th>
+                                                <th class='idHeader'><strong>#</strong></th>
+                                                <th class='titleHeader'><strong>Title</strong></th>
+                                                <th class="authorHeader"><strong>Authors</strong></th>
+                                                <th class="collegeHeader"><strong>College</strong></th>
+                                                <th class="programHeader"><strong>Program</strong></th>
+                                                <th class="budgetHeader"><strong>Budget</strong></th>
+                                                <th class="statusHeader"><strong>Status</strong></th>
+                                                <th class="startedHeader"><strong>Date Started</strong></th>
+                                                <th class="endHeader"><strong>End Date</strong></th>
+                                                <th class="revisionHeader"><strong>Revision No</strong></th>
+                                                <th class="uploadHeader"><strong>Upload</strong></th>
+                                                <th class="actionHeader"><strong>Action</strong></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -830,19 +829,18 @@ if(isset($_POST['submit'])){
                                         	while($row = mysqli_fetch_assoc($result)) {
                                         	 ?>
                                     	 	<tr>
-                                            	<td></td>
-                                                 <td><strong><?php echo $row["faculty_research_id"]?></strong></td>
-                                                 <td><div class="d-flex align-items-center" class="rounded-lg me-2" width="24" alt="" style="text-align: left;"><?php echo $row["title"]?></div></td>
-                                                <td><?php echo $row["authors"]?></td>
-                                                <td><?php echo $row["college"]?></td>
-                                                <td><?php echo $row["program"]?></td>
-                                                <td><?php echo $row["budget"]?></td>
-                                                <td><?php echo $row["status"]?></td>
-                                                <td><?php echo $row["date_started"]?></td>
-                                                <td><?php echo $row["end_date"]?></td>
-                                                <td><?php echo $row["revision_no"]?></td>
-                                                <td><?php echo $row["file_path"]?></td>
-                                                <td>
+                                            		<td class='idHeader'><strong><?php echo $row["faculty_research_id"]?></strong></td>
+                                                 <td class='titleHeader'><div class="d-flex align-items-center" class="rounded-lg me-2" width="24" alt="" style="text-align: left;"><?php echo $row["title"]?></div></td>
+                                                <td class="authorHeader"><?php echo $row["authors"]?></td>
+                                                <td class="collegeHeader"><?php echo $row["college"]?></td>
+                                                <td class="programHeader"><?php echo $row["program"]?></td>
+                                                <td class="budgetHeader"><?php echo $row["budget"]?></td>
+                                                <td class="statusHeader"><?php echo $row["status"]?></td>
+                                                <td class="startedHeader"><?php echo $row["date_started"]?></td>
+                                                <td class="endHeader"><?php echo $row["end_date"]?></td>
+                                                <td class="revisionHeader"><?php echo $row["revision_no"]?></td>
+                                                <td class="uploadHeader"><?php echo $row["file_path"]?></td>
+                                                <td class="actionHeader"> 
 													<div class="d-flex">
 													<div class="dropdown">
 														<button type="button" data-bs-toggle="dropdown" style="border: 0; background: #fff; text-align: center;" >
@@ -865,6 +863,8 @@ if(isset($_POST['submit'])){
                             </div>
                         </div>
                     </div>
+
+
                 <?php
                 	$sql = "SELECT * FROM faculty_research";
                 	$result = mysqli_query($conn, $sql);
@@ -872,8 +872,9 @@ if(isset($_POST['submit'])){
 
                 	echo '<dialog class="modals modal',$row["faculty_research_id"],'" id="modal',$row["faculty_research_id"],'">
 	            	<div class="basic-form">
-                	<form method="post" action="topics.php">
+                	<form method="post" action="function.php">
                   	<div class="row">
+                  					<input type="text" name="id" value="',$row["faculty_research_id"],'" style="display: none;">
                             <div class="mb-12 col-md-12">
                                 <label class="form-label ">Title <span class="text-danger">*</span>
                                 </label>
@@ -884,7 +885,7 @@ if(isset($_POST['submit'])){
                     	<div class="row" style="margin-top: 14px;">
                     		<div class="mb-3 col-md-3">
                                 <label class="form-label">Author(s) <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Research Title" required="" name="authors">',$row["authors"],'</textarea>
+                                <textarea class="form-control" id="validationCustom04" rows="5" placeholder="Authors" required="" name="authors">',$row["authors"],'</textarea>
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label class="form-label">College <span class="text-danger">*</span></label>
@@ -939,7 +940,7 @@ if(isset($_POST['submit'])){
                             </div>
                             <div class="mb-3 col-md-3">
                                 <label>Revision No.</label>
-                                <input type="text" class="form-control" name="revisionno" value="',$row["revisionno"],'">
+                                <input type="text" class="form-control" name="revisionno" value="',$row["revision_no"],'">
                             </div>	
                         </div>
       				    <div class="col-md-2" style="margin-top: 14px;">
@@ -952,7 +953,7 @@ if(isset($_POST['submit'])){
       				    			Upload
       				    		</button>
       				    	</div> -->
-      				    	<button type="submit" class="btn btn-primary mb-2" name="submit">Update</button>
+      				    	<button type="submit" class="btn btn-primary mb-2" name="update">Update</button>
       				    	<a href="#"><i type="Closed" class="button close-button',$row["faculty_research_id"],' btn btn-primary mb-2">Close</i></a>
   				    	</div>
       				</form>
