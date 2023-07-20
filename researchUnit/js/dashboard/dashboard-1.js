@@ -26,6 +26,14 @@
 				  name: 'Cycling',
 				  data: [80, 40, 55, 20, 45, 30, 80]
 				}, 
+				{
+				  name: 'Cycling',
+				  data: [80, 40, 55, 20, 45, 30, 80]
+				}, 
+				{
+				  name: 'Cycling',
+				  data: [80, 40, 55, 20, 45, 30, 80]
+				}, 
 				
 			],
 				chart: {
@@ -51,7 +59,7 @@
 				filter: 'none',
 			  }
 			},
-			colors:['#FFA26D', '#FF5ED2'],
+			colors:['#F8BABA', '#F83E3E', '#e79f31', '#DB7093'],
 			dataLabels: {
 			  enabled: false,
 			},
@@ -88,7 +96,7 @@
 			},
 			xaxis: {
 				 position: 'bottom',
-			  categories: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+			  categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 			  labels: {
 			   style: {
 				  colors: '#787878',
@@ -215,7 +223,7 @@
 			},
 			xaxis: {
 				 position: 'bottom',
-			  categories: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+			  categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 			  labels: {
 			   style: {
 				  colors: '#787878',
@@ -342,7 +350,7 @@
 			},
 			xaxis: {
 				 position: 'bottom',
-			  categories: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+			  categories: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 			  labels: {
 			   style: {
 				  colors: '#787878',
@@ -452,7 +460,7 @@
 			},
 			xaxis: {
 				
-			  categories: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+			  categories: ['J', 'F', 'M', 'A', 'M', 'J', 'J'],
 			  labels: {
 				style: {
 					colors: '#7E7F80',
@@ -633,7 +641,7 @@
 		  show: true,
 		  width: 6,
 		  curve:'smooth',
-		  colors:['var(--primary)'],
+		  colors: '#FFCF6D'
 		},
 		
 		grid: {
@@ -760,7 +768,7 @@
 		  show: true,
 		  width: 6,
 		  curve:'smooth',
-		  colors:['var(--primary)'],
+		  colors:'#FFCF6D'
 		},
 		
 		grid: {
@@ -867,7 +875,7 @@
             startAngle: -130,
             endAngle: 130,
             track: {
-              background: "#F1EAFF",
+              background: "#fa8072",
               strokeWidth: '100%',
               margin: 5,
             },
@@ -875,7 +883,7 @@
 			hollow: {
               margin: 30,
               size: '45%',
-              background: '#F1EAFF',
+              background: '#fffaef',
               image: undefined,
               imageOffsetX: 0,
               imageOffsetY: 0,
@@ -889,7 +897,7 @@
               value: {
                 offsetY: 5,
                 fontSize: '22px',
-				color:'#886CC0',
+				color:'#1dbf1d',
 				fontWeight:700,
               }
             }
@@ -916,7 +924,7 @@
         }, */
         fill: {
           type: 'gradient',
-		  colors:'#FF63E6',
+		  colors:'#F83E3E',
           gradient: {
               shade: 'white',
               shadeIntensity: 0.15,
