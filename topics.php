@@ -243,13 +243,8 @@ if(isset($_POST['submit'])){
 						</a>
                     </li>
                      <li><a href="topics.php" class="">
-<<<<<<< HEAD
-						    <i class="fas fa-users"></i>
-							<span class="nav-text">Research Title</span>
-=======
 						    <i class="fas fa-clipboard"></i>
 							<span class="nav-text">Research Topic</span>
->>>>>>> sidebar
 						</a>
 					</li>
 					 
