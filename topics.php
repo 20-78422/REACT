@@ -11,9 +11,9 @@ if(isset($_POST['submit'])){
 	$date_started= $_POST['datestarted'];
 	$end_date = $_POST['enddate'];
 	$revision_no = $_POST['revisionno'];
-	// $file_path = $_POST['filepath'];
+	$file_path = $_POST['filepath'];
 
-	$sql = "INSERT INTO `faculty_research` (`faculty_research_id`, `title`, `authors`, `college`, `program`, `budget`, `status`, `date_started`, `end_date`, `revision_no`, `file_path`) VALUES (NULL, '$title', '$authors', '$college', '$program', '$budget', '$status', '$date_started', '$end_date', '$revision_no', NULL)";
+	$sql = "INSERT INTO `faculty_research` (`faculty_research_id`, `title`, `authors`, `college`, `program`, `budget`, `status`, `date_started`, `end_date`, `revision_no`, `file_path`) VALUES (NULL, '$title', '$authors', '$college', '$program', '$budget', '$status', '$date_started', '$end_date', '$revision_no', '$file_path')";
 
 	$result =mysqli_query($conn, $sql);
 
@@ -281,8 +281,8 @@ if(isset($_POST['submit'])){
 				<div class="row page-titles">
 					<ol class="breadcrumb">
 						<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-						<li class="breadcrumb-item"><a href="kanban.html">Research Topic</a></li>
-						<li class="breadcrumb-item active"><a href="kanban.html">Research Title</a></li>
+						<li class="breadcrumb-item"><a href="kanban.php">Research Topic</a></li>
+						<li class="breadcrumb-item active"><a href="topics.php">Research Title</a></li>
 					</ol>
                 </div>
 				<div class="row">
@@ -363,19 +363,17 @@ if(isset($_POST['submit'])){
                                                 <input type="text" class="form-control" name="revisionno">
                                             </div>	
                                         </div>
-                      				    <div class="col-md-2" style="margin-top: 14px;">
-                      				    	<!-- <div class="card">
-                      				    		<button type="button" class="btn btn-rounded btn-success" name="filePath">
-                      				    			<span class="btn-icon-start text text-success">
-                      				    				<i class="fa fa-upload color-success">
-                      				    				</i>
-                      				    			</span>
-                      				    			Upload
-                      				    		</button>
-                      				    	</div> -->
-                      				    	<button type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
-															<a href="kanban.php"><type="Closed" class="btn btn-primary mb-2">Close</a>
-          				    			</form>
+                      				    <div class="col-md-2" style="margin-top: 5px;">
+          				    			<button type="button" class="btn btn-rounded btn-success" name="filepath">
+          				    				<input type="file" id="uploadbtn">
+          				    				<label for="uploadbtn"><i class="fas fa-upload"></i>Upload file</label>	
+              				    		</button>
+                      				    	</div>
+                      				    	 <div class="col-md-2" style="margin-top: 10px;">
+                  				    			<button type="submit" class="btn btn-primary mb-2" name="submit">Submit</button>
+													<a href="kanban.php"><type="Closed" class="btn btn-primary mb-2">Close</a>
+											</div>
+          										    			
                   				    </div>
                             	</div>
                             </div>
