@@ -244,7 +244,8 @@ if(isset($_POST['submit'])){
                     </li>
                      <li><a href="topics.php" class="">
 						    <i class="fas fa-clipboard"></i>
-							<span class="nav-text">Research Topic</span></a>
+							<span class="nav-text">Research Topic</span>
+						</a>
 					</li>
 					 
 					<li><a class="">

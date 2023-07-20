@@ -737,100 +737,78 @@
         <div class="content-body">
             <!-- row -->
 			<div class="container-fluid">
-				<div class="d-flex justify-content-between align-items-center flex-wrap">
-					<div class="input-group contacts-search mb-4">
-						<input type="text" class="form-control" placeholder="Search here...">
-						<span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
-					</div>
-					<div class="mb-4">
-						<a href="javascript:void(0);" class="btn btn-primary btn-rounded fs-18"><i style='font-size: 15px' class='fas'>&#xf0b0;</i>  Filter
-						</a>
-					</div>
-				</div>	
+				<div class="row page-titles">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item "><a href="index.html">Dashboard</a></li>
+						<li class="breadcrumb-item active"><a href="kanban.html">Research Topic</a></li>
+					</ol>
+                </div>
+
 				<div class="row">
+					<div class="col-xl-12">
+						<div class="d-flex justify-content-between align-items-center flex-wrap">
+							<div class="input-group contacts-search mb-4">
+								<input type="text" class="form-control" placeholder="Search here...">
+								<span class="input-group-text"><a href="javascript:void(0)"><i class="flaticon-381-search-2"></i></a></span>
+							</div>
+						</div>
+					</div>				
+				</div>	
 				<div class="col-lg-12">
                         <div class="card">
                             <div class="card-body">
                                 <div class="table-responsive">
-                                    <table class="table table-responsive-md">
+                                    <table class="tableResearch">
                                         <thead>
                                             <tr>
-                                                <th style="width:600px;">
-												</th>
-                                                <th><strong>#</strong></th>
-                                                <th><strong>Title</strong></th>
-                                                <th><strong>Authors</strong></th>
-                                                <th><strong>Department</strong></th>
-                                                <th><strong>Program</strong></th>
-                                                <th><strong>Budget</strong></th>
-                                                <th><strong>Date Started</strong></th>
-                                                <th><strong>End Date</strong></th>
-                                                <th><strong>Revision No.</strong></th>
-                                                <th><strong>Status</strong></th>
-                                                <th><strong></strong></th>
+                                                <th class='idHeader'><strong>#</strong></th>
+                                                <th class='titleHeader'><strong>Title</strong></th>
+                                                <th class="authorHeader"><strong>Authors</strong></th>
+                                                <th class="collegeHeader"><strong>College</strong></th>
+                                                <th class="programHeader"><strong>Program</strong></th>
+                                                <th class="budgetHeader"><strong>Budget</strong></th>
+                                                <th class="statusHeader"><strong>Status</strong></th>
+                                                <th class="startedHeader"><strong>Date Started</strong></th>
+                                                <th class="endHeader"><strong>End Date</strong></th>
+                                                <th class="revisionHeader"><strong>Revision No</strong></th>
+                                                <th class="uploadHeader"><strong>Upload</strong></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>
-												</td>
-                                                <td><strong>542</strong></td>
-                                                <td><div class="d-flex align-items-center" style="text-align: justify;">React (Research Activity Tracker): An Innovative Tool for Tracking and Monitoring in BatstateU Faculty Research Performancelkasdkjasdkjalkdj kakjdlkjak lkakjlkdja sjajsdhaj ahdjah a kajsh akha sdhaj </div></td>
-                                                <td>example@example.com	</td>
-                                                <td>01 August 2020</td>
-                                                <td><div class="d-flex align-items-center"><i class="fa fa-circle text-success me-1"></i> Successful</div></td>
-                                                <td>
-												</td>
+                                        	<?php 
+                                        	require '../dbconn.php';
+                                        	$sql = "SELECT * FROM faculty_research";
+                                        	$result = mysqli_query($conn, $sql);
+                                        	while($row = mysqli_fetch_assoc($result)) {
+                                        	 ?>
+                                    	 	<tr>
+                                            		<td class='idHeader'><strong><?php echo $row["faculty_research_id"]?></strong></td>
+                                                 <td class='titleHeader'><div class="d-flex align-items-center" class="rounded-lg me-2" width="24" alt="" style="text-align: left;"><?php echo $row["title"]?></div></td>
+                                                <td class="authorHeader"><?php echo $row["authors"]?></td>
+                                                <td class="collegeHeader"><?php echo $row["college"]?></td>
+                                                <td class="programHeader"><?php echo $row["program"]?></td>
+                                                <td class="budgetHeader"><?php echo $row["budget"]?></td>
+                                                <td class="statusHeader"><?php echo $row["status"]?></td>
+                                                <td class="startedHeader"><?php echo $row["date_started"]?></td>
+                                                <td class="endHeader"><?php echo $row["end_date"]?></td>
+                                                <td class="revisionHeader"><?php echo $row["revision_no"]?></td>
+                                                <td class="uploadHeader"><?php echo $row["file_path"]?></td>
                                             </tr>
-											<tr>
-                                                <td>
-												</td>
-                                                <td><strong>542</strong></td>
-                                                <td><div class="d-flex align-items-center"><img src="images/avatar/2.jpg" class="rounded-lg me-2" width="24" alt=""> <span class="w-space-no">Dr. Jackson</span></div></td>
-                                                <td>example@example.com	</td>
-                                                <td>01 August 2020</td>
-                                                <td><div class="d-flex align-items-center"><i class="fa fa-circle text-danger me-1"></i> Canceled</div></td>
-                                                <td>
-												</td>
-                                            </tr>
-											<tr>
-                                                <td>
-												</td>
-                                                <td><strong>542</strong></td>
-                                                <td><div class="d-flex align-items-center"><img src="images/avatar/3.jpg" class="rounded-lg me-2" width="24" alt=""> <span class="w-space-no">Dr. Jackson</span></div></td>
-                                                <td>example@example.com	</td>
-                                                <td>01 August 2020</td>
-                                                <td><div class="d-flex align-items-center"><i class="fa fa-circle text-warning me-1"></i> Pending</div></td>
-                                                <td>
-												</td>
-                                            </tr>
+                                			<?php
+                                				}
+                                			?>
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                 </div>
-					<div class="progect-pagination d-flex justify-content-between align-items-center flex-wrap">
-						<h4 class="mb-3">Showing 10 from 160 data</h4>
-						<ul class="pagination mb-3">
-							<li class="page-item page-indicator">
-								<a class="page-link" href="javascript:void(0)">
-									<i class="fas fa-angle-double-left me-2"></i>Previous</a>
-							</li>
-							<li class="page-item">
-								<a class=" active" href="javascript:void(0)">1</a>
-								<a class="" href="javascript:void(0)">2</a>
-								<a class="" href="javascript:void(0)">3</a>
-							</li>
-							<li class="page-item page-indicator">
-								<a class="page-link" href="javascript:void(0)">
-								Next<i class="fas fa-angle-double-right ms-2"></i></a>
-							</li>
-						</ul>
-					</div>
-				</div>	
+
+
+              
             </div>
+
+
         </div>
         <!--**********************************
             Content body end

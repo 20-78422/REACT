@@ -29156,3 +29156,114 @@ html[dir="rtl"] [direction="rtl"][data-sidebar-style="compact"]:not([data-layout
       color: #fff; }
 
 /*# sourceMappingURL=style.css.map */
+.reserach_title {
+  max-width: 300px;
+  width: 100%;
+}
+
+.modals {
+  padding: 2em;
+  max-width: 50ch;
+  position: absolute;
+  border: 0;
+  box-shadow: 0 0 1em rgb(0 0 0 / .5);
+  max-width: 1000px;
+  width: 100%;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  border-radius: 30px;
+  /*top: 0px;*/
+}
+
+.modals::backdrop{
+  background: rgb(0 0 0 / .5);
+}
+
+.row2{
+  display: flex;
+  flex-direction: row;
+
+}
+
+dd.option {
+  position: absolute;
+  z-index: 100;
+}
+
+.editbtn {
+  background: #fff;
+  width: 100%;
+  border: 0;
+  height: 25px;
+  text-align: left;
+  padding-left: 13px;
+}
+
+.editbtn:hover {
+  background-color: #EEE;
+}
+
+.tableResearch {
+  width: 1350px;
+}
+
+.tableResearch th, .tableResearch td {
+  border-bottom: 1px solid #EEEEEE;
+  padding: 10px 0px;
+}
+
+.tableResearch th {
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.idHeader{
+  width: 50px;
+}
+
+.titleHeader {
+  width: 250px;
+}
+
+.authorHeader {
+  width: 175px;
+  text-align: center;
+}
+
+.collegeHeader {
+  width: 75px;
+  text-align: center;
+}
+
+.programHeader {
+  width: 75px;
+  text-align: center;
+}
+
+.budgetHeader {
+  width: 75px;
+  text-align: center;
+}
+.statusHeader {
+  width: 100px;
+  text-align: center;
+}
+.startedHeader {
+  width: 100px;
+  text-align: center;
+}
+.endHeader {
+  width: 100px;
+  text-align: center;
+}
+.revisionHeader {
+  width: 90px;
+  text-align: center;
+}
+.uploadHeader {
+  width: 150px;
+  text-align: center;
+}
+.actionHeader {
+  width: 100px;
+}
