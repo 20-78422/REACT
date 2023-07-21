@@ -321,7 +321,7 @@
 				filter: 'none',
 			  }
 			},
-			colors:['#FFA26D', '#FF5ED2'],
+			colors:['#000', '#000'],
 			dataLabels: {
 			  enabled: false,
 			},
