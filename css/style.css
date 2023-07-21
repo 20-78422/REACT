@@ -9293,7 +9293,7 @@ label {
     height: 80px; }
   #preloader .lds-ripple div {
     position: absolute;
-    border: 4px solid var(--primary);
+    border: 4px solid #a19c9c;
     opacity: 1;
     border-radius: 50%;
     animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite; }
@@ -25476,7 +25476,7 @@ table.dataTable.row-border tbody th, table.dataTable.row-border tbody td, table.
       z-index: -1;
       margin: -0.1875rem;
       border-radius: inherit;
-      background: linear-gradient(to right, #CEA7FF, #ffa7d7); }
+      background: linear-gradient(to right, #a19c9c, #a19c9c); }
 
 .header-profile .nav-link {
   padding-right: 0 !important;
